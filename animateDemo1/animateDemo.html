@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" href="animateDemoCss.css">
+</head>
+<script src="jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var page=1;  //初始化版面
+		var i=4; //每个版面4张图片
+		$("span.next").click(function(){  //绑定click事件
+			var $parent=$(this).parents("div.v_show");  //根据点击的元素获取到父元素
+			var $v_show=$parent.find("div.v_content_list");  //找到视频内容区域
+			var $v_content=$parent.find("div.v_content");  //找到视频内容区域的外层div
+
+			var v_width=$v_content.width();  //获取区域内容的宽度，带单位
+			var len=$v_show.find("li").length;  //总的视频总数
+			var page_count=Math.ceil(len/i); //只要不是整数，就向上取整
+			if(!$v_show.is(":animated")){
+				if(page==page_count){
+					$v_show.animate({left:'0px'}, "fast");
+					page=1;
+				}else{
+					$v_show.animate({left:'-='+v_width}, "fast");
+					page++;
+				}
+				//小点高亮
+				$parent.find("span").eq((page-1)).addClass('current').siblings().removeClass('current');
+			}
+		});
+		$("span.prev").click(function(){  //绑定click事件
+			var $parent=$(this).parents("div.v_show");  //根据点击的元素获取到父元素
+			var $v_show=$parent.find("div.v_content_list");  //找到视频内容区域
+			var $v_content=$parent.find("div.v_content");  //找到视频内容区域的外层div
+
+			var v_width=$v_content.width();  //获取区域内容的宽度，带单位
+			var len=$v_show.find("li").length;  //总的视频总数
+			var page_count=Math.ceil(len/i); //只要不是整数，就向上取整
+			if(!$v_show.is(":animated")){
+				if(page==1){
+					$v_show.animate({left:'-='+v_width*(page_count-1)}, "fast");
+					page=page_count;
+				}else{
+					$v_show.animate({left:'+='+v_width}, "fast");
+					page--;
+				}
+				//小点高亮
+				$parent.find("span").eq((page-1)).addClass('current').siblings().removeClass('current');
+			}
+		});
+	});
+</script>
+<body>
+<div class="v_show">
+	<div class="v_caption">
+		<h2 class="zongyi" title="综艺节目">综艺节目</h2>
+		<div class="highlight_tip">
+			<span class="current">1</span>
+			<span>2</span>
+			<span>3</span>
+			<span>4</span>
+		</div>
+		<div class="change_btn">
+			<span class="prev">上一页</span>
+			<span class="next">下一页</span>
+		</div>
+		<em><a href="#">更多</a></em>
+	</div>
+	<div class="v_content">
+		<div class="v_content_list">
+			<ul>
+				<li>
+					<a href="#"><img src="img/01.jpg" alt="RunningMan"></a>
+					<h4><a href="#">Runningman</a></h4>
+					<span>播放：<em>28,276</em></span>
+				</li>
+				<li>
+					<a href="#"><img src="img/01.jpg" alt="RunningMan"></a>
+					<h4><a href="#">Runningman</a></h4>
+					<span>播放：<em>28,276</em></span>
+				</li>
+				<li>
+					<a href="#"><img src="img/01.jpg" alt="RunningMan"></a>
+					<h4><a href="#">Runningman</a></h4>
+					<span>播放：<em>28,276</em></span>
+				</li>
+				<li>
+					<a href="#"><img src="img/01.jpg" alt="RunningMan"></a>
+					<h4><a href="#">Runningman</a></h4>
+					<span>播放：<em>28,276</em></span>
+				</li>
+				<li>
+					<a href="#"><img src="img/02.jpg" alt="RunningMan"></a>
+					<h4><a href="#">Runningman</a></h4>
+					<span>播放：<em>26,876</em></span>
+				</li>
+				<li>
+					<a href="#"><img src="img/02.jpg" alt="RunningMan"></a>
+					<h4><a href="#">Runningman</a></h4>
+					<span>播放：<em>26,876</em></span>
+				</li>
+				<li>
+					<a href="#"><img src="img/02.jpg" alt="RunningMan"></a>
+					<h4><a href="#">Runningman</a></h4>
+					<span>播放：<em>26,876</em></span>
+				</li>
+				<li>
+					<a href="#"><img src="img/02.jpg" alt="RunningMan"></a>
+					<h4><a href="#">Runningman</a></h4>
+					<span>播放：<em>26,876</em></span>
+				</li>
+				<li>
+					<a href="#"><img src="img/03.jpg" alt="RunningMan"></a>
+					<h4><a href="#">Runningman</a></h4>
+					<span>播放：<em>37,579</em></span>
+				</li>
+				<li>
+					<a href="#"><img src="img/03.jpg" alt="RunningMan"></a>
+					<h4><a href="#">Runningman</a></h4>
+					<span>播放：<em>37,579</em></span>
+				</li>
+				<li>
+					<a href="#"><img src="img/03.jpg" alt="RunningMan"></a>
+					<h4><a href="#">Runningman</a></h4>
+					<span>播放：<em>37,579</em></span>
+				</li>
+				<li>
+					<a href="#"><img src="img/03.jpg" alt="RunningMan"></a>
+					<h4><a href="#">Runningman</a></h4>
+					<span>播放：<em>37,579</em></span>
+				</li>
+				<li>
+					<a href="#"><img src="img/04.jpg" alt="RunningMan"></a>
+					<h4><a href="#">Runningman</a></h4>
+					<span>播放：<em>57,865</em></span>
+				</li>
+				<li>
+					<a href="#"><img src="img/04.jpg" alt="RunningMan"></a>
+					<h4><a href="#">Runningman</a></h4>
+					<span>播放：<em>57,865</em></span>
+				</li>
+				<li>
+					<a href="#"><img src="img/04.jpg" alt="RunningMan"></a>
+					<h4><a href="#">Runningman</a></h4>
+					<span>播放：<em>57,865</em></span>
+				</li>
+				<li>
+					<a href="#"><img src="img/04.jpg" alt="RunningMan"></a>
+					<h4><a href="#">Runningman</a></h4>
+					<span>播放：<em>57,865</em></span>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+</body>
+</html>
