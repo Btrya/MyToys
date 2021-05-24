@@ -47,7 +47,7 @@ function generateJSONFIle(data, callback) {
     if (err) console.log('ERROR! generateJSONFIle error, the error msg is:', err)
     else {
       console.log('Generate apiData.JSON Successful!')
-      callback('aledy generate apiData.json')
+      callback('already generate apiData.json')
     }
   })
 }
@@ -94,7 +94,7 @@ function dealScri(arr) {
     let fileStr = fs.readFileSync(filePath, 'utf-8') // 根据文件路径读取对应的文件内容
     for (let item of finalOriginData) { // 文件内容匹配最终需要修改的内容，有则修改，此处无法剪枝
       const from = item[0], target = item[1]
-      fileStr = fileStr.replace(from, target)
+      fileStr = fileStr.replace(new RegExp(from, 'g'), target)
     }
     fs.writeFileSync(filePath, fileStr)
   })
